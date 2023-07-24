@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transactions Template</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+      <!-- Bootstrap CSS v5.2.1 -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  
+      <link href="assets/css/modules.css" rel="stylesheet">
+  <!-- Add CSS link here -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .transaction-container {
+      width: 400px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    .transaction-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .transaction-item span {
+      margin-right: 10px;
+    }
+    .transaction-item button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="transaction-container">
+    <h2>Transactions</h2>
+    <div class="transaction-item">
+      <span>Transaction 1</span>
+      <span>$50</span>
+      <button>Delete</button>
+    </div>
+    <div class="transaction-item">
+      <span>Transaction 2</span>
+      <span>$100</span>
+      <button>Delete</button>
+    </div>
+    <!-- Add more transactions here -->
+    <!-- Example:
+    <div class="transaction-item">
+      <span>Transaction 3</span>
+      <span>$30</span>
+      <button>Delete</button>
+    </div>
+    -->
+    <input type="text" id="newTransaction" placeholder="Enter new transaction">
+    <input type="number" id="transactionAmount" placeholder="Amount">
+    <button onclick="addTransaction()">Add Transaction</button>
+  </div>
+
+  <!-- Add JavaScript here -->
+  <script>
+    function addTransaction() {
+      const newTransactionInput = document.getElementById('newTransaction');
+      const transactionAmountInput = document.getElementById('transactionAmount');
+      const newTransactionText = newTransactionInput.value.trim();
+      const transactionAmount = parseFloat(transactionAmountInput.value);
+
+      if (newTransactionText !== '' && !isNaN(transactionAmount)) {
+        const transactionContainer = document.querySelector('.transaction-container');
+        const transactionItem = document.createElement('div');
+        transactionItem.classList.add('transaction-item');
+        transactionItem.innerHTML = `
+          <span>${newTransactionText}</span>
+          <span>$${transactionAmount.toFixed(2)}</span>
+          <button>Delete</button>
+        `;
+        transactionContainer.insertBefore(transactionItem, newTransactionInput);
+        newTransactionInput.value = '';
+        transactionAmountInput.value = '';
+      }
+    }
+
+    const deleteButtons = document.querySelectorAll('.transaction-item button');
+    deleteButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const transactionItem = button.parentNode;
+        transactionItem.remove();
+      });
+    });
+  </script>
+
+
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+  <script src="assets/js/modules.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Maps Template</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+      <!-- Bootstrap CSS v5.2.1 -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  
+      <link href="assets/css/modules.css" rel="stylesheet">
+  <!-- Add Leaflet CSS link here -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Leaflet JavaScript link here -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  
+  <script>
+    // Replace 'YOUR_API_KEY' with your actual API key (if required by the map service).
+    // If using Leaflet, you generally don't need an API key.
+    const API_KEY = 'YOUR_API_KEY';
+
+    // Initialize the map
+    const map = L.map('map').setView([latitude, longitude], zoom);
+
+    // Replace 'latitude', 'longitude', and 'zoom' with the desired initial map coordinates and zoom level.
+    // For example, 'latitude' could be 40.7128, 'longitude' could be -74.0060, and 'zoom' could be 12.
+
+    // Add the tile layer (replace 'mapbox/streets-v11' with the desired tile layer)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Add markers or other map elements as needed
+    const marker = L.marker([latitude, longitude]).addTo(map);
+
+    // Replace 'latitude' and 'longitude' with the desired coordinates for the marker.
+    // For example, 'latitude' could be 40.7128 and 'longitude' could be -74.0060.
+
+    // Add popups to the markers (optional)
+    marker.bindPopup('<b>Hello!</b><br>This is a marker.').openPopup();
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+</script>
+
+<script src="assets/js/modules.js"></script>
+</body>
+</html>
